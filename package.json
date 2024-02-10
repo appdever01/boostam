@@ -7,9 +7,9 @@
   "scripts": {
     "start": "node server.js"
   },
-  "name": "adtasker",
+  "name": "boostam",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "app.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
