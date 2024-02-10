@@ -5,7 +5,7 @@
     "mongodb": "^6.3.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "name": "boostam",
   "version": "1.0.0",
