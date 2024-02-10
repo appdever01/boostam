@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
 const connectToDatabase = require("./connectDB");
-const { insertUser } = require("./component");
+const { insertUser } = require("./dbModel");
 const { send_button, send_message, send_template } = require("./wa_func");
 const app = express();
 app.use(express.json());
