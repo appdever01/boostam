@@ -3,7 +3,7 @@ const axios = require("axios");
 const { url } = require("inspector");
 const token = process.env.TOKEN;
 const base_url = "https://graph.facebook.com/v18.0/206459855891807/messages";
-const send_button = (btn_list, data) => {
+const send_button = (message, btn_list, data) => {
   let datax = JSON.stringify({
     messaging_product: "whatsapp",
     recipient_type: "individual",
@@ -12,7 +12,7 @@ const send_button = (btn_list, data) => {
     interactive: {
       type: "button",
       body: {
-        text: "*Welcome to AdTasker Bot*",
+        text: message,
       },
       action: {
         buttons: btn_list.map((btn) => ({
