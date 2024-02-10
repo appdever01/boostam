@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 const token = process.env.TOKEN;
-
+console.log("Started");
 app.post("/webhook", async (req, res) => {
   try {
     const data = req.body;
