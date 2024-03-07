@@ -25,7 +25,7 @@ app.post("/webhook", async (req, res) => {
     //   data
     // );
 
-    button = [
+    const button = [
       {
         type: "reply",
         reply: {
@@ -41,25 +41,7 @@ app.post("/webhook", async (req, res) => {
         },
       },
     ];
-    send_button(
-      [
-        {
-          type: "reply",
-          reply: {
-            id: "btn_1",
-            title: "Submit",
-          },
-        },
-        {
-          type: "reply",
-          reply: {
-            id: "btn_2",
-            title: "Cancel",
-          },
-        },
-      ],
-      data
-    );
+    send_button(button, data);
 
     if (data.type == "interactive" && data.btn_id == "btn_1") {
       send_message("Provide a name for the class", data);
