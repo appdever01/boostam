@@ -4,6 +4,7 @@ const { url } = require("inspector");
 const token = process.env.TOKEN;
 const base_url = "https://graph.facebook.com/v18.0/206459855891807/messages";
 const send_button = (message, btn_list, data) => {
+  console.log(btn_list);
   let datax = JSON.stringify({
     messaging_product: "whatsapp",
     recipient_type: "individual",
