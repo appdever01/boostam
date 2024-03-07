@@ -9,7 +9,6 @@ app.use(express.json());
 
 const token = process.env.TOKEN;
 console.log("Started");
-// Updated code to send button message if user sends "Hi" and handle classname input
 app.post("/webhook", async (req, res) => {
   try {
     const data = req.body;
@@ -18,9 +17,11 @@ app.post("/webhook", async (req, res) => {
 
     let response_msg = "";
     let needName = false;
+    let className = ""; // Initialize className variable
 
     if (needName && data.type === "text") {
-      send_message(`You said ${data.msg}`, data);
+      className = data.msg; // Capture the class name
+      send_message(`Class name received: ${className}`, data); // Send message with the received class name
       needName = false;
     }
 
@@ -45,7 +46,6 @@ app.post("/webhook", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
-
 // Assuming you listen to a port
 const PORT = process.env.PORT || 4002;
 app.listen(PORT, () => {
