@@ -9,6 +9,7 @@ app.use(express.json());
 
 const token = process.env.TOKEN;
 console.log("Started");
+let needName = false;
 app.post("/webhook", async (req, res) => {
   try {
     const data = req.body;
@@ -16,10 +17,10 @@ app.post("/webhook", async (req, res) => {
     await insertUser(data);
 
     let response_msg = "";
-    let needName = false;
+
     let className = ""; // Initialize className variable
 
-    if (needName && data.type === "text") {
+    if (needName && data.type == "text") {
       className = data.msg; // Capture the class name
       send_message(`Class name received: ${className}`, data); // Send message with the received class name
       needName = false;
