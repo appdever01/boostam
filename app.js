@@ -25,10 +25,7 @@ app.post("/webhook", async (req, res) => {
       ];
       send_button("Please select an option:", button, data);
     } else if (data.type === "interactive" && data.btn_id === "btn_1") {
-      if (
-        send_message("Provide a name for the class", data) &&
-        data.type === "text"
-      ) {
+      if (send_message("Provide a name for the class", data)) {
         send_message(`You said ${data.msg}`, data);
       }
     } else {
