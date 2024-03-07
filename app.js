@@ -32,8 +32,11 @@ app.post("/webhook", async (req, res) => {
     send_button("Button testinng ", button, data);
 
     if (data.type == "interactive" && data.btn_id == "btn_1") {
-      send_message("Provide a name for the class", data);
-      send_message(`You said ${data.msg}`, data);
+      if (send_message("Provide a name for the class", data)) {
+        if (data.type == "text") {
+          send_message(`You said ${data.msg}`, data);
+        }
+      }
     } else {
       response_msg = "Fuck yoouu";
     }
