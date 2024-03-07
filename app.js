@@ -10,22 +10,6 @@ app.use(express.json());
 const token = process.env.TOKEN;
 console.log("Started");
 app.post("/webhook", async (req, res) => {
-  button = [
-    {
-      type: "reply",
-      reply: {
-        id: "btn_1",
-        title: "Submit",
-      },
-    },
-    {
-      type: "reply",
-      reply: {
-        id: "btn_2",
-        title: "Cancel",
-      },
-    },
-  ];
   try {
     const data = req.body;
 
@@ -35,18 +19,51 @@ app.post("/webhook", async (req, res) => {
 
     let response_msg = "";
 
-    send_template(
-      "firstt_message",
-      "https://telegra.ph/file/2894988ef8b29096c7aeb.jpg",
+    // send_template(
+    //   "firstt_message",
+    //   "https://telegra.ph/file/2894988ef8b29096c7aeb.jpg",
+    //   data
+    // );
+
+    button = [
+      {
+        type: "reply",
+        reply: {
+          id: "btn_1",
+          title: "Submit",
+        },
+      },
+      {
+        type: "reply",
+        reply: {
+          id: "btn_2",
+          title: "Cancel",
+        },
+      },
+    ];
+    send_button(
+      [
+        {
+          type: "reply",
+          reply: {
+            id: "btn_1",
+            title: "Submit",
+          },
+        },
+        {
+          type: "reply",
+          reply: {
+            id: "btn_2",
+            title: "Cancel",
+          },
+        },
+      ],
       data
     );
-
-    send_button(button, data);
 
     if (data.type == "interactive" && data.btn_id == "btn_1") {
       send_message("Provide a name for the class", data);
       send_message(`You said ${data.msg}`, data);
-    } else if (data.type == "interactive") {
     } else {
       response_msg = "Fuck yoouu";
     }
