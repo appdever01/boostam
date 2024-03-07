@@ -17,6 +17,12 @@ app.post("/webhook", async (req, res) => {
     await insertUser(data);
 
     let response_msg = "";
+    let needName = false;
+
+    if (needName && data.type === "text") {
+      send_message(`You said ${data.msg}`, data);
+      needName = false;
+    }
 
     if (data.type === "text" && data.msg.toLowerCase() === "hi") {
       const button = [
@@ -25,12 +31,8 @@ app.post("/webhook", async (req, res) => {
       ];
       send_button("Please select an option:", button, data);
     } else if (data.type === "interactive" && data.btn_id === "btn_1") {
-      if (
-        send_message("Provide a name for the class", data) &&
-        data.type === "text"
-      ) {
-        send_message(`You said ${data.msg}`, data);
-      }
+      send_message("Provide a name for the class", data);
+      needName = true;
     } else {
       response_msg = "Error: Invalid request";
     }
