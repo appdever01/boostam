@@ -84,6 +84,7 @@ const send_message = (message, data) => {
     .catch((error) => {
       console.log(error);
     });
+  return true;
 };
 
 const send_template = (template_name, media_url, data) => {
