@@ -26,20 +26,8 @@ app.post("/webhook", async (req, res) => {
     // );
 
     const button = [
-      {
-        type: "reply",
-        reply: {
-          id: "btn_1",
-          title: "Submit",
-        },
-      },
-      {
-        type: "reply",
-        reply: {
-          id: "btn_2",
-          title: "Cancel",
-        },
-      },
+      { id: "btn_1", title: "Submit" },
+      { id: "btn_2", title: "Cancel" },
     ];
     send_button("Button testinng ", button, data);
 
