@@ -7,7 +7,7 @@ const send_button = (message, btn_list, data) => {
   let datax = JSON.stringify({
     messaging_product: "whatsapp",
     recipient_type: "individual",
-    to: data.to,
+    to: "2349159899405",
     type: "interactive",
     interactive: {
       type: "button",
